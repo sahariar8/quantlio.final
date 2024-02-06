@@ -1,0 +1,346 @@
+{
+  "s": "10232318",
+  "collectdate": "2022-09-15",
+  "comment": "",
+  "diagnosis": "",
+  "medications": "BUPRENORPHINE",
+  "patient": {
+    "fname": "BIG",
+    "lname": "BETTY",
+    "mname": "OL",
+    "sex": "F",
+    "Dob": "1963-06-03"
+  },
+  "facility": {
+    "name": "DEMO LAB",
+    "addr1": "P.O.Box 5",
+    "addr2": "",
+    "city": "My Town",
+    "state": "Az",
+    "zip": "85204",
+    "phone": "480-888-1234"
+  },
+  "provider": {
+    "fname": "DOCTOR",
+    "lname": "DEMO",
+    "npi": "demo"
+  },
+  "profiles": [
+    {
+      "profileid": "SCREEN",
+      "description": "TOXICOLOGY SCREEN",
+      "department": "TOX",
+      "analyzeddate": "2022-09-15",
+      "analyzedtime": "09:52:34",
+      "analyzedby": "CLIN1",
+      "tests": [
+        {
+          "testorder": 0,
+          "testid": "AMPH",
+          "testname": "Amphetamine(SCREEN)",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        },
+        {
+          "testorder": 1,
+          "testid": "BARB",
+          "testname": "Barbiturate(SCREEN)",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "G/DL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        },
+        {
+          "testorder": 2,
+          "testid": "BUP",
+          "testname": "Buprenorphine(SCREEN)",
+          "testtype": "N",
+          "numericresult": 15.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        },
+        {
+          "testorder": 3,
+          "testid": "OXY",
+          "testname": "Oxycodone(SCREEN)",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        },
+        {
+          "testorder": 4,
+          "testid": "ETOH",
+          "testname": "Ethanol(SCREEN)",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        },
+        {
+          "testorder": 5,
+          "testid": "THC",
+          "testname": "Cannabinoids(SCREEN)",
+          "testtype": "N",
+          "numericresult": 100.0,
+          "remark": "POSITIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 0.0,
+          "highref": 0.0
+        }
+      ]
+    },
+    {
+      "profileid": "P1004",
+      "description": "BENZODIAZEPINES (CONFIRMATION)",
+      "department": "TOX",
+      "analyzeddate": "2022-09-15",
+      "analyzedtime": "09:52:34",
+      "analyzedby": "CLIN1",
+      "tests": [
+        {
+          "testorder": 0,
+          "testid": "C7AMI",
+          "testname": "7-Aminoclonazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 1,
+          "testid": "CALPH",
+          "testname": "Alpha-Hydroxyalprazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 2,
+          "testid": "CALPHT",
+          "testname": "Alpha-Hydroxytriazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 3,
+          "testid": "CALPR",
+          "testname": "Alprazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 4,
+          "testid": "CDIAZ",
+          "testname": "Diazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 5,
+          "testid": "CFLUR",
+          "testname": "Flurazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 6,
+          "testid": "CZHEFLUR",
+          "testname": "2-Hydroxyethylflurazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 20.0,
+          "highref": 20.0
+        },
+        {
+          "testorder": 7,
+          "testid": "CAHMIDA",
+          "testname": "Alpha-Hydroxymidazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 20.0,
+          "highref": 20.0
+        },
+        {
+          "testorder": 8,
+          "testid": "CLORA",
+          "testname": "Lorazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 9,
+          "testid": "CMIDA",
+          "testname": "Midazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 10,
+          "testid": "CNORD",
+          "testname": "Nordiazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 11,
+          "testid": "COXAZ",
+          "testname": "Oxazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 12,
+          "testid": "CTEMA",
+          "testname": "Temazepam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 50.0,
+          "highref": 50.0
+        },
+        {
+          "testorder": 13,
+          "testid": "CTRIA",
+          "testname": "Triazolam",
+          "testtype": "N",
+          "numericresult": 0.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 20.0,
+          "highref": 20.0
+        }
+      ]
+    },
+    {
+      "profileid": "P1005",
+      "description": "BUPRENORPHINES (CONFIRMATION)",
+      "department": "TOX",
+      "analyzeddate": "2022-09-15",
+      "analyzedtime": "09:52:34",
+      "analyzedby": "CLIN1",
+      "tests": [
+        {
+          "testorder": 0,
+          "testid": "CNORB",
+          "testname": "Norbuprenorphine",
+          "testtype": "N",
+          "numericresult": 50.0,
+          "remark": "NEGATIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 100.0,
+          "highref": 100.0
+        },
+        {
+          "testorder": 1,
+          "testid": "CBUP",
+          "testname": "Buprenorphine",
+          "testtype": "N",
+          "numericresult": 5.0,
+          "remark": "NEGATIVE Inconsistant with Medication",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 10.0,
+          "highref": 10.0
+        }
+      ]
+    },
+    {
+      "profileid": "P1015",
+      "description": "MARIJUANA (CONFIRMATION)",
+      "department": "TOX",
+      "analyzeddate": "2022-09-15",
+      "analyzedtime": "09:52:34",
+      "analyzedby": "CLIN1",
+      "tests": [
+        {
+          "testorder": 0,
+          "testid": "CTHC",
+          "testname": "THC-COOH",
+          "testtype": "N",
+          "numericresult": 300.0,
+          "remark": "POSITIVE",
+          "units": "ng/mL",
+          "format": "0.0",
+          "lowref": 25.0,
+          "highref": 25.0
+        }
+      ]
+    }
+  ]
+}
