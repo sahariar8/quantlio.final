@@ -197,6 +197,7 @@ class PDFGenerationService
             if (!empty($dataSet)) 
             {
                 dd($dataSet,'nishad');
+                //starting my code for cln1   //Shahariar Alam
 
                 $icdCodeArray = $dataSet['diagnosis_codes'];
                 dd($dataSet,'nishad');

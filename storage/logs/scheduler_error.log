@@ -1,1 +1,10 @@
 [2024-02-05 07:39:46] local.ERROR: $$$ -> exception : Cannot connect to 54.213.201.55:22. Error 113. No route to host  
+[2024-02-07 07:15:28] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, null given  
+[2024-02-07 07:38:44] local.ERROR: $$$ -> exception : Undefined variable $data  
+[2024-02-07 07:40:10] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 09:42:16] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 09:51:40] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 12:13:14] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 12:20:49] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 12:21:21] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  
+[2024-02-07 12:22:22] local.ERROR: $$$ -> exception : foreach() argument must be of type array|object, string given  

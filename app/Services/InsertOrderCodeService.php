@@ -10,7 +10,7 @@ class InsertOrderCodeService
 {
     public function insertOrderCode($sampleId,$workstatus= 0,$numberOfFailur= 0)
     {
-        $insert = DB::table('order_code_queues')
+        DB::table('order_code_queues')
         ->insert([
             'orderCode' => $sampleId, 'workStatus' => $workstatus, 'numberOfFailur'=> $numberOfFailur
         ]);

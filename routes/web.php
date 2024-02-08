@@ -130,6 +130,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     //check method
     Route::get('/sftp-check',[SchedulerJobController::class,'getAndStoreRequestedJsonDataSet']);
+    Route::get('/check',[SchedulerJobController::class,'check']);
 
 
 

@@ -2,42 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use DOMDocument;
+use Illuminate\Support\Facades\DB;
 use Exception;
-use Response;
-use DB;
 use Config;
-use App\Models\OrderHistory;
 use Illuminate\Support\Facades\Log;
-use App\Exceptions\Handle;
-use Illuminate\Http\Client\ConnectionException;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
-use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\WebhookPayload;
-use App\Models\OrderDetail;
-use App\Models\IcdCode;
-use App\Models\LabLocation;
-use App\Models\DrugInteraction;
-use App\Models\ordercodequeue;
-use Illuminate\Support\Facades\Storage;
-use URL;
-use Aws\S3\S3Client;
-use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
-use League\Flysystem\Filesystem;
-use App\Models\OrderTestClassSection;
 use App\Services\PDFGenerationService;
 use App\Services\SFTPService;
+use App\Services\JsonErrorService;
 use App\Services\InsertOrderCodeService;
-use OrderCodeQueueToProcess;
-use Psy\Readline\Hoa\Console;
 
 // use App\Http\Controllers\Console;
 
@@ -64,8 +38,11 @@ class SchedulerJobController extends Controller
         try
         {
             $files = $this->_SFTPService->getListAllInFilesInsFTPServer();
-            // dd($files);
             foreach ($files as $key=>$file) {
+                $data = (new JsonErrorService)->replaceMissingValues($file);
+                // dd($data);
+                $file = (new JsonErrorService)->check($data);
+                // dd($data1);
                 $data = json_decode($file, true);//if json
                 // dd($file);
                 
@@ -77,17 +54,16 @@ class SchedulerJobController extends Controller
                     $existingRecord = DB::table('input_datasets')
                         ->where('order_code', $sampleId)
                         ->first();
-        
-                    if ($existingRecord) {
-                    // Update the existing record
-                        print_r('update');
-                        $update = DB::table('input_datasets')
+
+                    if($existingRecord){
+                        $insert4 = DB::table('input_datasets')
                             ->where('order_code', $sampleId)
                             ->update([
                                 'dataset' => json_encode($data)
                             ]);
+
                         $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
-                        if($update && $insert3){
+                        if($insert4 && $insert3){
     
                             (new SFTPService)->moveInFileToArchive($key);
                             print_r('update hoise');
