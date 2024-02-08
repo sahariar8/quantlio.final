@@ -38,7 +38,6 @@ class SchedulerJobController extends Controller
             $files = $this->_SFTPService->getListAllInFilesInsFTPServer();
             // dd($files);
             foreach ($files as $key=>$file) {
-                // dd($file);
                 // $data = (new JsonErrorService)->replaceMissingValues($file);
                 // dd($data);
                 // $file = (new JsonErrorService)->check($data);
@@ -46,7 +45,6 @@ class SchedulerJobController extends Controller
                 // $data = json_decode($file, true);
                 // dd($file);
                 if($data = json_decode($file, true)){
-                    // dd($data);
                     if ($data !== null) {
                         // Access the sampleid
                         $sampleId = $data['sampleid'];
@@ -93,65 +91,67 @@ class SchedulerJobController extends Controller
                                 echo 'inserted failed into db';
                             }
                         }
-                    }
-                }else{
-                    $data = (new JsonErrorService)->replaceMissingValues($file);
-                    // dd($data,'sa');
-                    $file = (new JsonErrorService)->check($data);
-                    $data = json_decode($file, true);
-                    if ($data !== null) {
-                        // Access the sampleid
-                        $sampleId = $data['sampleid'];
-                        echo "Sample ID: $sampleId<br>";
-        
-                        $existingRecord = DB::table('input_datasets')
-                            ->where('order_code', $sampleId)
-                            ->first();
-    
-                        if($existingRecord){
-                            $insert4 = DB::table('input_datasets')
+                    } else {
+                        $data = (new JsonErrorService)->replaceMissingValues($file);
+                        dd($data,'sa');
+                        $file = (new JsonErrorService)->check($data);
+                        $data = json_decode($file, true);
+                        if ($data !== null) {
+                            // Access the sampleid
+                            $sampleId = $data['sampleid'];
+                            echo "Sample ID: $sampleId<br>";
+            
+                            $existingRecord = DB::table('input_datasets')
                                 ->where('order_code', $sampleId)
-                                ->update([
-                                    'dataset' => json_encode($data)
+                                ->first();
+        
+                            if($existingRecord){
+                                $insert4 = DB::table('input_datasets')
+                                    ->where('order_code', $sampleId)
+                                    ->update([
+                                        'dataset' => json_encode($data)
+                                    ]);
+        
+                                $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+                                if($insert4 && $insert3){
+            
+                                    (new SFTPService)->moveInFileToArchive($key);
+                                    print_r('update hoise');
+            
+                                }else{
+            
+                                    echo 'inserted failed into db';
+                                }
+        
+                            
+                            } else {
+                            //insert the record if not exist
+                                $insert1 = DB::table('input_datasets')
+                                ->insert([
+                                    'order_code' => $sampleId, 'dataset' => json_encode($data)
                                 ]);
-    
-                            $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
-                            if($insert4 && $insert3){
-        
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('update hoise');
-        
-                            }else{
-        
-                                echo 'inserted failed into db';
-                            }
-    
-                        
-                        } else {
-                        //insert the record if not exist
-                            $insert1 = DB::table('input_datasets')
-                            ->insert([
-                                'order_code' => $sampleId, 'dataset' => json_encode($data)
-                            ]);
-                            //service calling for insert oeder code into order_code_queue table
-                            $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
-        
-                            if($insert1 && $insert2){
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('insert hoise');
-        
-                            }else{
-        
-                                echo 'inserted failed into db';
-                            }
+                                //service calling for insert oeder code into order_code_queue table
+                                $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+            
+                                if($insert1 && $insert2){
+                                    (new SFTPService)->moveInFileToArchive($key);
+                                    print_r('insert hoise');
+            
+                                }else{
+            
+                                    echo 'inserted failed into db';
+                                }
 
-                        }
+                            }
                     }
-                
                 }
-            return response()->json($files);  
+                
+               
+            }
+            return response()->json($files);
+
+        }
     }
-}
         catch(Exception $ex)
         {
             Log::channel('scheduler_error')->error('$$$ -> exception : ' . $ex->getMessage());
