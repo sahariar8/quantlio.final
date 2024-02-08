@@ -164,7 +164,7 @@ class PDFGenerationService
                 try
                 {
                    $dataSet =  $this->_getDatasetService->getDataset($orderCode);
-                //    dd($dataSet,"shahariar");
+                // dd($dataSet,"shahariar");
                    $this->dump_array('Got dataset from DB: ', $dataSet);
                 //    dd($dataSet,"shahariar");
 
@@ -196,30 +196,37 @@ class PDFGenerationService
 
             if (!empty($dataSet)) 
             {
-                dd($dataSet,'nishad');
+                // dd($dataSet,'nishad');
                 //starting my code for cln1   //Shahariar Alam
 
-                $icdCodeArray = $dataSet['diagnosis_codes'];
-                dd($dataSet,'nishad');
+                //TODO; check diagonosis format
+                //ducktap: 
+                $icdCodeArray =[]; // $dataSet['diagnosis']; // $dataSet['diagnosis_codes'];
+                // dd($dataSet,'nishad');
 
-                $accountName = $dataSet['location']['name'];
-                $inHouseLabLocations = $dataSet['organization']['name'];
-                $providerNpi = $dataSet['provider']['npi'];
-                $receivedDate = $dataSet['order']['received_datetime'];
-                $providerFirstName = $dataSet['provider']['first_name'];
-                $providerLastName = $dataSet['provider']['last_name'];
-                $patientFirstName = $dataSet['patient']['first_name'];
-                $patientLastName = $dataSet['patient']['last_name'];
-                $patientGender = $dataSet['patient']['gender_code'];
-                $patientDOB = $dataSet['patient']['dob'];
-                $patientPhone = $dataSet['patient']['home_phone'] ?? $dataSet['patient']['mobile_phone'];
-                $accession = $dataSet['order']['accession_id'];
-                $sampleName = $dataSet['panels'][0]['sample_type'];
-                $collected = $dataSet['order']['collected_datetime'];
+                $accountName ='';// $dataSet['location']['name']; //not found
+                $inHouseLabLocations = $dataSet['facility']['name'];//ok
+                $providerNpi = $dataSet['provider']['npi'];//ok
+                $receivedDate = '';//$dataSet['order']['received_datetime'];//not found
+                $providerFirstName = $dataSet['provider']['fname'];//ok
+                $providerLastName = $dataSet['provider']['lname'];//ok
+                $patientFirstName = $dataSet['patient']['fname'];//ok
+                $patientLastName = $dataSet['patient']['lname'];//ok
+                $patientGender = $dataSet['patient']['sex'];//ok
+                $patientDOB = $dataSet['patient']['Dob'];//ok
+                $patientPhone = ''; // $dataSet['patient'][''] ?? $dataSet['patient'][''];//not found
+                $accession = $dataSet['sampleid']; //$dataSet['order']['accession_id'];
+                $sampleName = '';//$dataSet['panels'][0]['sample_type'];//not found
+                $collected = $dataSet['collectdate']; //$dataSet['order']['collected_datetime'];
                 $reported = date('Y-m-d', time());
-                $testPanel  = $dataSet['panels'];
-                $medications = $dataSet['medications'];
-                $state = $dataSet['patient']['address_state_code'];
+                $testPanel  = $dataSet['profiles']; //$dataSet['panels'];
+                $medications = $dataSet['medications'];//ok
+                if($medications == ''){
+                    $medications = [];
+                }else{
+                    $medications  = explode(',', $medications);
+                }
+                $state = '';//$dataSet['patient']['address_state_code'];//not found
 
                 OrderDetail::firstOrCreate(['order_code' => $orderCode]);
                 OrderHistory::create(['order_code' => $orderCode]);
@@ -237,11 +244,13 @@ class PDFGenerationService
                     ->where('order_code', $orderCode)->get();
 
                 $labLocations = DB::table('lab_locations')->get();
-                $labLocations_Stratus['address'] =  $dataSet['organization']['address_street'].", ". $dataSet['organization']['address_city'].", ". $dataSet['organization']['address_state_code']." ". $dataSet['organization']['address_zip'] ;
-                $labLocations_Stratus['phone'] =$dataSet['organization']['phone'];
-                $labLocations_Stratus['fax'] =$dataSet['lab']['fax'];
-                $labLocations_Stratus['CLIA'] =$dataSet['organization']['clia'];
-                $labLocations_Stratus['director'] =$dataSet['organization']['medical_director'];
+                $labLocations_Stratus['address'] =  $dataSet['facility']['addr1'].", ".$dataSet['facility']['addr2'].", ". $dataSet['facility']['city'].", ". $dataSet['facility']['state']." ". $dataSet['facility']['zip'] ;
+                // $dataSet['facility']['address_street'].", ". $dataSet['organization']['address_city'].", ". $dataSet['organization']['address_state_code']." ". $dataSet['organization']['address_zip'] ;
+                $labLocations_Stratus['phone'] =$dataSet['facility']['phone'];
+                // $labLocations_Stratus['phone'] =$dataSet['organization']['phone'];
+                $labLocations_Stratus['fax'] ='';//$dataSet['lab']['fax'];
+                $labLocations_Stratus['CLIA'] ='';//$dataSet['organization']['clia'];
+                $labLocations_Stratus['director'] ='';//$dataSet['organization']['medical_director'];
                 $this->dump_array("labLocations_Stratus :: ", $labLocations_Stratus);
 
                 OrderDetail::where('order_code', $orderCode)
@@ -259,7 +268,10 @@ class PDFGenerationService
 
                 foreach ($labLocations as $labLocation) 
                 {
+                    // dd($labLocation,"sahariar");
+
                     if ($inHouseLabLocations == $labLocation->location) {
+                        
                         OrderDetail::where('order_code', $orderCode)
                             ->update([
                                 'location_id' => $labLocation->id
@@ -288,7 +300,17 @@ class PDFGenerationService
 
                 $this->dump_array("testPanel", $testPanel);
 
+                //ducktap
+                $testPanel_new= array();
+                foreach($testPanel as $profile){
+                    $profile["panel_name"] = ''; 
+                    $testPanel_new[]  = $profile; 
+                }
+                $testPanel = $testPanel_new;
+
                 $testResults = $this->orderTestResultsFromPanels($testPanel);
+
+                //dd($testResults,'saha');
 
                 $this->dump_array("testResults__after format", $testResults);
                 $this->Log_scheduler_info('-> pdf generation - icdCodeArray: ' . json_encode($icdCodeArray));
@@ -425,10 +447,11 @@ class PDFGenerationService
                 //@@$this->dump_array("testResults__Count", []);
                 //@@$this->dump_array(count($testResults), []);
                 //@@$this->dump_array("testResults__abc", $testResults);
-
+                // dd($testResults,"sa");
                 foreach ($testResults as $result) {
+
                     // TODO: This needs to be changed from 'Positive' to 'Detected'
-                    if ($result["result_flag"] == 'Detected') {
+                    if ($result["result_flag"] == 'Positive') {
                         $detectedTest = strtolower($result['test_description']);
                         $prescribedMedications[] = $detectedTest;
                     }
@@ -438,7 +461,7 @@ class PDFGenerationService
 
                 $this->dump_array("prescribedMedications__2", $prescribedMedications);
 
-                //ddd($prescribedMedications);
+                // dd($prescribedMedications,"saha");
 
                 OrderDetail::where('order_code', $orderCode)
                     ->update([
@@ -607,7 +630,6 @@ class PDFGenerationService
                                 }
                             }
                         }
-
                         $this->Log_scheduler_info('-> pdf generation - arrayResult_CI_Data_On_icdMesh: ' . json_encode($arrayResult_CI_Data_On_icdMesh));
                         $this->Log_scheduler_info('-> pdf generation - resultArray_mesh_data: ' . json_encode($resultArray_mesh_data));
 
@@ -649,7 +671,6 @@ class PDFGenerationService
 
                             $this->Log_scheduler_info('-> pdf generation - type: ' . json_encode($type));
                             $this->dump_array("type:___123", $type);
-
                             foreach ($type as $key => $value) {
                                 $drugName = $value['interactionPair'][0]['interactionConcept'][0]['minConceptItem']['name'];
                                 $drugInteractedWith = $value['interactionPair'][0]['interactionConcept'][1]['minConceptItem']['name'];
@@ -769,9 +790,9 @@ class PDFGenerationService
                     // Test Information from Order API
                     if (!blank($testPanel) && !empty($testPanel) && filled($testPanel) &&  is_array($testPanel) && count($testPanel) > 0) {
                         //@@$this->dump_array("testPanel", $testPanel);
-
                         foreach ($testPanel as $tPanel) {
                             $testInformations[] = $tPanel['panel_name'];
+                            //dd($testInformations,'saha');
                             if (is_array($testInformations)) {
                                 $testInformation = implode(' , ', $testInformations);
                             }
@@ -1075,6 +1096,8 @@ class PDFGenerationService
                         $notDetectedNotPrescribed_new_variable = array(); //Important NOTE: this array is making null here, as new logic for "Stratus" start here..
 
                         $this->dump_array("testResults", $testResults);
+
+                        dd("sahariar");
 
                         foreach ($testResults as $testResult) {
 
@@ -1685,6 +1708,9 @@ class PDFGenerationService
 
             return $response;
         } catch (Exception $ex) {
+
+            dd($ex->getMessage());
+
             $response = [
                 'content' => $ex->getMessage(),
                 'message' => "No results for this order code",
@@ -2097,25 +2123,29 @@ class PDFGenerationService
     private function orderTestResultsFromPanels($testPanels): array
     {
         $orderTestResults = array();
-        foreach ($testPanels as $panel) {
-            foreach ($panel["results"] as $result) {
+        foreach ($testPanels as $profile) {
+
+            foreach ($profile["tests"] as $test) {
 
                 //TODO: ducktap : stratus, prev api was in below format
                 //  $result["test_type"] = trim($panel["panel_name"]); // TODO: alt_panel_name is empty on some cases
 
                 //TODO: ducktap: recent api give data format.
-                $result["test_type"] = trim($result["test_description"]); // TODO: alt_panel_name is empty on some cases
-
-                $result["testmethod_name"] = trim($panel["testmethod_name"]);
+                $test["test_type"] = trim($test["testname"]); // trim($test["test_description"]); // TODO: alt_panel_name is empty on some cases
+                $test["result_flag"] = $test["remark"];
+                $test["testmethod_name"] = trim($profile["description"]);
+                $test["test_description"] = trim($test["testname"]); 
+                
 
                 //remove "\t" and others from  flag ""
-                $result["result_medication"] = str_replace("\t", "", $result["result_medication"]);
+                //TODO: this field is absent in Clin1 (Like: "COMPLIANT"/ "NON COMPLIANT"...)
+               // $test["result_medication"] = str_replace("\t", "", $test["result_medication"]);
 
-                if ($result["testmethod_name"] == "Clin1") {
-                    $orderTestResults[] = $result;
+                if ($test["testmethod_name"] == "Clin1") {
+                    $orderTestResults[] = $test;
                 } else // TODO: Remove this else block
                 {
-                    $orderTestResults[] = $result;
+                    $orderTestResults[] = $test;
                 }
             }
         }

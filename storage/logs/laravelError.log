@@ -85625,3 +85625,158 @@ M54.16 Radiculopathy, lumbar region',
      'escapeWhenCastingToString' => false,
   )),
 )  
+[2024-02-08 10:57:54] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:11:24] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:36:04] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:44:28] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:44:48] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:46:49] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:52:23] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:54:17] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:56:19] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:56:20] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:56:22] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:56:23] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:57:18] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:57:20] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 11:57:20] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:57:22] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 11:59:03] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:59:05] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 11:59:34] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 11:59:35] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 12:00:20] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 12:00:22] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 12:00:24] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 12:00:26] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 12:32:02] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 12:32:04] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 12:33:50] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 12:33:51] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:21:09] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 13:21:11] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:22:07] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 13:22:10] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:22:58] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 13:22:59] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:26:37] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 13:26:38] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:33:45] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-08 13:33:53] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
