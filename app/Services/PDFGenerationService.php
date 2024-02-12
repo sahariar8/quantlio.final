@@ -204,6 +204,7 @@ class PDFGenerationService
                 //ducktap: 
                 $icdCodeArray =[]; // $dataSet['diagnosis']; // $dataSet['diagnosis_codes'];
                 // dd($dataSet,'nishad');
+                
 
                 $accountName ='';// $dataSet['location']['name']; //not found
                 $inHouseLabLocations = $dataSet['facility']['name'];//ok
