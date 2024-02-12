@@ -81,6 +81,7 @@ class PDFGenerationService
     public function getDataSetFrom_mock($orderCode)
     {
         $filePath = storage_path('./../MockData/mock_dataset.json');
+        dd($filePath,'sa');
         $jsonData = File::get($filePath);
         $dataSet = json_decode($jsonData, true);
 
@@ -154,7 +155,7 @@ class PDFGenerationService
                 // 3. get from mock data source
                 $show_log == 1;
                 $dataSet = $this->getDataSetFrom_mock($orderCode);
-                // dd($dataSet,"nishad");
+                dd($dataSet,"nishad");
             }
             else 
             {
@@ -221,11 +222,11 @@ class PDFGenerationService
                 $reported = date('Y-m-d', time());
                 $testPanel  = $dataSet['profiles']; //$dataSet['panels'];
                 $medications = $dataSet['medications'];//ok
-                if($medications == ''){
-                    $medications = [];
-                }else{
-                    $medications  = explode(',', $medications);
-                }
+                // if($medications == ''){
+                //     $medications = [];
+                // }else{
+                //     $medications  = explode(',', $medications);
+                // }
                 $state = '';//$dataSet['patient']['address_state_code'];//not found
 
                 OrderDetail::firstOrCreate(['order_code' => $orderCode]);
@@ -849,7 +850,6 @@ class PDFGenerationService
 
                         // TODO: Panel Test Results are all Negative
                         $finalArray = [];
-                        // ddd($panelTestResult);
 
                         /*
                         // Prescribed Medications based on order code
@@ -953,6 +953,8 @@ class PDFGenerationService
                                 //Focus: jafar
                             }
                         }
+                        // ddd($medicineNamesArray,'saha');
+                        dd($prescribedMedsArray,'saha');
 
                         $this->dump_array("medicineNamesArray__890", $medicineNamesArray);
                         $this->dump_array("prescribedMedsArray__890", $prescribedMedsArray);
@@ -2135,7 +2137,8 @@ class PDFGenerationService
                 $test["result_flag"] = $test["remark"];
                 $test["testmethod_name"] = trim($profile["description"]);
                 $test["test_description"] = trim($test["testname"]); 
-                
+                $test["test_cutoffvalue"] = trim($test["lowref"]); 
+                                
 
                 //remove "\t" and others from  flag ""
                 //TODO: this field is absent in Clin1 (Like: "COMPLIANT"/ "NON COMPLIANT"...)
@@ -2232,8 +2235,16 @@ class PDFGenerationService
     private function medicationNamesFromMedications($medications): array
     {
         $medicationName = array();
-        foreach ($medications as $medication) {
-            $medicationName[] = $medication["name"];
+        // foreach ($medications as $medication) {
+        //     $medicationName[] = $medication["name"];
+        // }
+
+        //exchange sahariar
+
+        if($medications == ''){
+            $medicationName = [];
+        }else{
+            $medicationName  = explode(',', $medications);
         }
 
         return $medicationName;

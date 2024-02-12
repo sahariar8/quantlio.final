@@ -22,6 +22,7 @@ use App\Http\Controllers\TradesController;
 use App\Http\Controllers\FailedPDFController;
 use App\Http\Controllers\RequestDataSetController;
 use App\Http\Controllers\SchedulerJobController;
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +132,15 @@ Route::group(['middleware' => ['auth']], function() {
     //check method
     Route::get('/sftp-check',[SchedulerJobController::class,'getAndStoreRequestedJsonDataSet']);
     Route::get('/check',[SchedulerJobController::class,'check']);
+
+    //setting
+
+    Route::controller(SettingsController::class)->group(function(){
+        Route::get('/settings','index');
+    });
+    //get Metabolite
+
+    Route::get('/metabolite',[SettingsController::class,'index']);
 
 
 

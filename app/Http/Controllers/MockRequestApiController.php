@@ -17,7 +17,7 @@ class MockRequestApiController extends Controller
 
      public function dataSet($order_code)
      {
-       $dataset_single = DB::table('input_datasets')->select('dataset')->where('order_code', $order_code)->first();
+        $dataset_single = DB::table('input_datasets')->select('dataset')->where('order_code', $order_code)->first();
         $cleanDataSet = array();
         $cleanedData = stripslashes((string)json_encode($dataset_single->dataset));
       

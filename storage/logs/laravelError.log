@@ -85780,3 +85780,30 @@ M54.16 Radiculopathy, lumbar region',
 [2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
 [2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
 [2024-02-08 13:33:53] local.ERROR: PDF report is pending-- result_flag has some blank value  
+[2024-02-12 10:52:35] local.ERROR: ICD codes not available, orderCode22112211  
+[2024-02-12 10:52:36] local.ERROR: No data found (NO -ddi_row_data), orderCode : 22112211  
+[2024-02-12 11:10:52] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 11:10:54] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 11:10:56] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 11:11:01] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 11:11:20] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
+[2024-02-12 11:12:29] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 11:12:31] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 11:12:33] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 11:12:38] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 11:12:54] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
+[2024-02-12 11:18:11] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 11:18:15] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 11:18:16] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 11:18:22] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 11:18:35] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
+[2024-02-12 11:20:01] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 11:20:02] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 11:20:03] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 11:20:07] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 11:20:19] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
+[2024-02-12 11:32:37] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 11:32:39] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 11:32:41] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 11:32:47] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 11:33:02] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
