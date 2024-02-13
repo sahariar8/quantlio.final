@@ -156,6 +156,10 @@ class SFTPService
         $destinationPath = 'JSONOut/Archive/' . $filenameWithExtension;
 
         if (Storage::disk('sftp')->exists($sourcePath)) {
+            if (Storage::disk('sftp')->exists($destinationPath)) {
+                Storage::disk('sftp')->move($destinationPath, $destinationPath."".now());
+            }
+
             Storage::disk('sftp')->move($sourcePath, $destinationPath);
             return true;
         } else {
