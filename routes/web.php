@@ -141,6 +141,11 @@ Route::group(['middleware' => ['auth']], function() {
     //get Metabolite
 
     Route::get('/metabolite',[SettingsController::class,'index']);
+    //setting Crud
+    
+    Route::get('/metabolite',[SettingsController::class,'index']);
+    Route::get('/metabolite',[SettingsController::class,'index']);
+    Route::get('/metabolite',[SettingsController::class,'index']);
 
 
 
