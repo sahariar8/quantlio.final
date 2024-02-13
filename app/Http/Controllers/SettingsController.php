@@ -16,7 +16,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $name = array('Carisoprodol','sahariar');
+        $name = array('Carisoprodol','Meprobamate','Hydrocodone');
         $metabolite = (new MetaboliteService)->getMetaboliteByTest($name);
         dd($metabolite);
     }

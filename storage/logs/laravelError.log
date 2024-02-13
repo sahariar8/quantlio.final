@@ -85807,3 +85807,8 @@ M54.16 Radiculopathy, lumbar region',
 [2024-02-12 11:32:41] local.ERROR: Boxed warning not found for  Atorvastatin  
 [2024-02-12 11:32:47] local.ERROR: Boxed warning not found for  Rosuvastatin  
 [2024-02-12 11:33:02] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
+[2024-02-12 17:17:32] local.ERROR: ICD codes not available, orderCode10001436  
+[2024-02-12 17:17:36] local.ERROR: Boxed warning not found for Pitavastatin  
+[2024-02-12 17:17:37] local.ERROR: Boxed warning not found for  Atorvastatin  
+[2024-02-12 17:17:40] local.ERROR: Boxed warning not found for  Rosuvastatin  
+[2024-02-12 17:17:53] local.ERROR: No data found (NO -ddi_row_data), orderCode : 10001436  
