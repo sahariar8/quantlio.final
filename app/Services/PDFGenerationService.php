@@ -804,7 +804,7 @@ class PDFGenerationService
                     $panelTestResult = array();
                     $medicineNamesArray = array();
                     //TODO: jafar - For test purpose only. Remove below code.
-                    $medicineNamesArray = $prescribedMedications;
+                    // $medicineNamesArray = $prescribedMedications;
                     $this->dump_array("medicineNamesArray:", $medicineNamesArray);
                     $this->Log_scheduler_info('-> pdf generation - medicineNamesArray: ' . json_encode($medicineNamesArray));
 
@@ -851,6 +851,7 @@ class PDFGenerationService
 
                         // TODO: Panel Test Results are all Negative
                         $finalArray = [];
+                        // dd($testResults,'saha');
 
                         /*
                         // Prescribed Medications based on order code
@@ -947,15 +948,18 @@ class PDFGenerationService
                         if (!blank($prescribedMedications) && !empty($prescribedMedications) && filled($prescribedMedications) &&  is_array($prescribedMedications) && count($prescribedMedications) > 0) {
                             $medicationWithMetaboitesArray = $this->metaboliteService->getMetaboliteByTest($prescribedMedications);
                             foreach ($prescribedMedications as $key => $prescibedMedicineName) {
+                                dump($prescibedMedicineName);
                                 $medicineNamesArray[] = $prescibedMedicineName;
-                                $prescribedMedsArray[$prescibedMedicineName] = $medicationWithMetaboitesArray[$prescibedMedicineName]["metabolite"];
-                                $prescribedWithMetabolites[$prescibedMedicineName] = $medicationWithMetaboitesArray[$prescibedMedicineName]["metabolite"];
+                                  // => NOTE: Below code, generate metabolite which never used. So we are commenting it for clin1"
+                                // $prescribedMedsArray[$prescibedMedicineName] = $medicationWithMetaboitesArray[$prescibedMedicineName]["metabolite"];
+                                // $prescribedWithMetabolites[$prescibedMedicineName] = $medicationWithMetaboitesArray[$prescibedMedicineName]["metabolite"];
 
                                 //Focus: jafar
                             }
+
                         }
+
                         // ddd($medicineNamesArray,'saha');
-                        dd($prescribedMedsArray,'saha');
 
                         $this->dump_array("medicineNamesArray__890", $medicineNamesArray);
                         $this->dump_array("prescribedMedsArray__890", $prescribedMedsArray);
@@ -1100,27 +1104,103 @@ class PDFGenerationService
 
                         $this->dump_array("testResults", $testResults);
 
-                        dd("sahariar");
+                        // dd("sahariar");
+
+                        // foreach ($testResults as $testResult) {
+
+                        //     //jafar: ducktap - remove which are special case and showing in "VALIDITY TESTING & SCREENS" SECTION
+                        //     if (in_array($testResult['test_description'], $testTypeArray) || in_array($testResult['test_description'], $panelTestsArray) ) 
+                        //     {
+                        //         continue;
+                        //     }
+
+                        //     if ($testResult["result_medication"] == "COMPLIANT") {
+                        //         $detectedPrescribed[] = $testResult;
+                        //     } else if ($testResult["result_medication"] == "NON-COMPLIANT") {
+                        //         $notDetectedPrescribed[] = $testResult;
+                        //     } else if ($testResult["result_medication"] == "NON-COMPLIANT NP" || $testResult["result_medication"] == "NON-COMPLIANT NP\t") {
+                        //         $detectedNotPrescribed[] = $testResult;
+                        //     } else if ($testResult["result_medication"] == "") {
+                        //         //ducktap: jafar
+                        //         $notDetectedNotPrescribed_new_variable[$testResult["test_type"]] = $testResult;
+                        //     }
+                        // }
+
+
+                        //***************** Shahariar's land */
+                             dump($testResults);
+                            dump ($medicationWithMetaboitesArray);
+                            dump($medicineNamesArray);
 
                         foreach ($testResults as $testResult) {
-
                             //jafar: ducktap - remove which are special case and showing in "VALIDITY TESTING & SCREENS" SECTION
                             if (in_array($testResult['test_description'], $testTypeArray) || in_array($testResult['test_description'], $panelTestsArray) ) 
                             {
                                 continue;
                             }
 
-                            if ($testResult["result_medication"] == "COMPLIANT") {
-                                $detectedPrescribed[] = $testResult;
-                            } else if ($testResult["result_medication"] == "NON-COMPLIANT") {
-                                $notDetectedPrescribed[] = $testResult;
-                            } else if ($testResult["result_medication"] == "NON-COMPLIANT NP" || $testResult["result_medication"] == "NON-COMPLIANT NP\t") {
-                                $detectedNotPrescribed[] = $testResult;
-                            } else if ($testResult["result_medication"] == "") {
-                                //ducktap: jafar
-                                $notDetectedNotPrescribed_new_variable[$testResult["test_type"]] = $testResult;
+                            if ($testResult["result_flag"] === "POSITIVE" || $testResult["result_flag"] === "DETECTED") {
+                                    // a. these are "detected"()
+                                    // (in_array($testResult["test_description"],$medicineNamesArray))
+                                if(in_array($testResult["test_description"],$medicineNamesArray)
+                                || (in_array($testResult["test_description"],$medicationWithMetaboitesArray)) ){
+                                    // a.1 These are "Detected + Prescribed"
+                                    $detectedPrescribed[] = $testResult;
+                                }
+                                else 
+                                {
+                                    // a.2 These are "Detected + Not Prescribed"
+                                    $detectedNotPrescribed[] = $testResult;
+                                }
                             }
+                            else
+                            {
+                                // b. These are "notDetected"
+                                if(in_array($testResult["test_description"],$medicineNamesArray)
+                                || (in_array($testResult["test_description"],$medicationWithMetaboitesArray)) ){
+                                    // a.1 These are "Not Detected + Prescribed"
+                                    $notDetectedPrescribed[] = $testResult;
+                                }
+                                else 
+                                {
+                                    // a.2 These are "Not Detected + Not Prescribed"
+                                    $notDetectedNotPrescribed_new_variable[$testResult["test_type"]] = $testResult;
+                                }
+
+                            } 
+
+                            // else if ($testResult["result_medication"] == "NON-COMPLIANT") {
+                            //     $notDetectedPrescribed[] = $testResult;
+                            // } else if ($testResult["result_medication"] == "NON-COMPLIANT NP" || $testResult["result_medication"] == "NON-COMPLIANT NP\t") {
+                            //     $detectedNotPrescribed[] = $testResult;
+                            // } else if ($testResult["result_medication"] == "") {
+                            //     //ducktap: jafar
+                            //     $notDetectedNotPrescribed_new_variable[$testResult["test_type"]] = $testResult;
+                            // }
                         }
+
+dump("detectedPrescribed", $detectedPrescribed);
+dump("detectedNotPrescribed", $detectedNotPrescribed);
+dump("notDetectedPrescribed", $notDetectedPrescribed);
+dump("notDetectedNotPrescribed_new_variable", $notDetectedNotPrescribed_new_variable);
+
+
+
+
+                       // dd('nishad');
+
+
+
+
+
+
+
+
+
+
+
+
+                        // ******************************** End of Shahariar's Land ***************/
 
                         $this->dump_array("detectedPrescribed__Count", count($detectedPrescribed));
                         $this->dump_array("notDetectedPrescribed__Count", count($notDetectedPrescribed));
@@ -1598,8 +1678,27 @@ class PDFGenerationService
 
                         $panelTests = DB::table('panel_tests')->get();
                         $dateTimeNow = new DateTime();
-                        $patientDOBDate = DateTime::createFromFormat("Ymd", $patientDOB);
-                        $collectedDate = DateTime::createFromFormat("YmdHis", $collected);
+                        if($patientDOB == "")
+                        {
+                            $patientDOBDate ="";
+                        }
+                        else
+                        {
+                            $patientDOBDate = DateTime::createFromFormat("Y-m-d", $patientDOB); // DateTime::createFromFormat("Ymd", $patientDOB);
+                            $patientDOBDate =  date_format($patientDOBDate, "m/d/Y");
+                        }
+
+                        dump($collected);
+                        if($collected == "")
+                        {
+                            $collectedDate ="";
+                        }
+                        else
+                        {
+                            $collectedDate = DateTime::createFromFormat("Y-m-d", $collected);
+                            $collectedDate = date_format($collectedDate, "m/d/Y");
+                        }
+                        
                         // $medicationsList = implode(", ", $prescribedMedications); // previous code.
                         $medicationsList = implode(", ", $prescribedMedications_as_prescribed);
 
@@ -1609,11 +1708,11 @@ class PDFGenerationService
                         $this->dump_array("notDetectedNotPrescribed__Count__16", count($notDetectedNotPrescribed_new_variable));
 
                         $this->Log_scheduler_info('-> before data set ');
-
+                       // dd($receivedDate,'sa');
                          $received_date_formated = "";
                         if($receivedDate == "")
                         {
-                            // $received_date_formated = "";
+                             // $received_date_formated = "";
                         }
                         else{
                              $received_date_formated = date("m/d/Y", strtotime($receivedDate));
@@ -1627,7 +1726,7 @@ class PDFGenerationService
                         $data = [
                             'code' =>  explode("-", $orderCode)[0],      // $orderCode,
                             'patientName' => $patientFirstName . ' ' . $patientLastName,
-                            'patientDOB' => date_format($patientDOBDate, "m/d/Y"),
+                            'patientDOB' => $patientDOBDate,  //date_format($patientDOBDate, "m/d/Y"),
                             'patientGender' => $patientGender,
                             'patientPhone' => $patientPhone,
                             'account' => $accountName,
@@ -1635,7 +1734,7 @@ class PDFGenerationService
                             'accession' => $accession,
                             'sample_type' => $sampleName,
                             'reported' => date_format($dateTimeNow, "m/d/Y"),
-                            'collected' => date_format($collectedDate, "m/d/Y"),
+                            'collected' => $collectedDate, // date_format($collectedDate, "m/d/Y"),
                             'phone' => $patientPhone,
                             'in_house_lab_location' => $inHouseLabLocations,
                             'testInformation' => $testInformation,
@@ -2138,7 +2237,8 @@ class PDFGenerationService
                 $test["result_flag"] = $test["remark"];
                 $test["testmethod_name"] = trim($profile["description"]);
                 $test["test_description"] = trim($test["testname"]); 
-                $test["test_cutoffvalue"] = trim($test["lowref"]); 
+                $test["test_cutoffvalue"] = trim($test["highref"]); 
+                $test["result_display"] = trim($test["numericresult"]); 
                                 
 
                 //remove "\t" and others from  flag ""
@@ -2398,8 +2498,8 @@ class PDFGenerationService
                 }
 
                 // step : 5 (Upload PDF to FTP folder)
-
-                $upload_folder = ( new SFTPService)->createFileInJsonOut($fileName,"shahariar");
+                // $pdf->output()
+                $upload_folder = ( new SFTPService)->createFileInJsonOut($fileName,$pdf->output());
                 
 
             //Unset Data

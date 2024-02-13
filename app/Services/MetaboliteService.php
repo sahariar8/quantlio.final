@@ -21,25 +21,12 @@ class MetaboliteService
             if(in_array($test->test_name,$testNames)){
                 $metabolite = $test->metabolite;
                 $parent = $test->parent;
-                if($parent != null && $metabolite != null){
-                    $response[] = [
-                        'testname' => $test->test_name,
-                        'metabolite' => $metabolite,
-                        'parent' => $parent
-                    ];
-                }elseif($parent == null && $metabolite != null){
-                    $response[] = [
-                        'testname' => $test->test_name,
-                        'metabolite' => $metabolite,
-                        
-                    ]; 
-                }elseif($parent != null && $metabolite == null){
-                    $response[] = [
-                        'testname' => $test->test_name,
-                        'parent' => $parent   
-                    ];
+                if($metabolite != null){
+                    $response[$test->test_name][] = $metabolite;
                 }
-                
+                if($parent != null){
+                    $response[$test->test_name][] = $parent;
+                }
             }
         }
         return $response;

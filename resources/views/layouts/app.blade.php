@@ -228,6 +228,15 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="/settings" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    {{ __('Settings') }}
+                                </p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
