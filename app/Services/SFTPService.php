@@ -6,6 +6,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class SFTPService
 {
@@ -36,18 +37,35 @@ class SFTPService
                         ->where('order_code', $sampleId)
                         ->first();
 
-                    if ($existingRecord) {
-                    // Update the existing record
-                        print_r('update');
-                        $update = DB::table('input_datasets')
-                            ->where('order_code', $sampleId)
-                            ->update([
-                                'dataset' => json_encode($data)
-                            ]);
+                        //ducktap: only insert , no update
+
+                    // if ($existingRecord) {
+                    // // Update the existing record
+                    //     print_r('update');
+                    //     $update = DB::table('input_datasets')
+                    //         ->where('order_code', $sampleId)
+                    //         ->update([
+                    //             'dataset' => json_encode($data)
+                    //         ]);
                     
-                    } else {
-                    //insert the record if not exist
-                        $insert = DB::table('input_datasets')
+                    // } else {
+                    // //insert the record if not exist
+                    //     $insert = DB::table('input_datasets')
+                    //     ->insert([
+                    //         'order_code' => $sampleId, 'dataset' => json_encode($data)
+                    //     ]);
+
+                    //     if($insert){
+
+                    //         (new SFTPService)->moveInFileToArchive($key);
+
+                    //     }else{
+
+                    //         echo 'inserted failed into db9';
+                    //     }
+                    // }
+
+                    $insert = DB::table('input_datasets')
                         ->insert([
                             'order_code' => $sampleId, 'dataset' => json_encode($data)
                         ]);
@@ -58,9 +76,8 @@ class SFTPService
 
                         }else{
 
-                            echo 'inserted failed into db';
+                            echo 'inserted failed into db9';
                         }
-                    }
                 } else {
                     // Handle JSON decoding error
                     echo "Failed to decode JSON data";

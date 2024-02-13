@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth:sanctum']],function() {
     Route::get('/refresh', [ContraindicationsAPI::class, 'refresh']);
 
     //Deployed for client
-    Route::POST('/generate-report', [GeneratePDFReportController::class, 'getPDFReport_from_api']);
+    // Route::POST('/generate-report', [GeneratePDFReportController::class, 'getPDFReport_from_api']);
 });
 
 Route::POST('/token-auth',[ContraindicationsAPI::class, 'login']);

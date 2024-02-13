@@ -179,7 +179,7 @@ class PDFGenerationService
             
             
 
-            $this->Log_scheduler_info('-> pdf generation - response: getDataSetFrom_StratusApi : ' . json_encode($dataSet));
+            $this->Log_scheduler_info('-> pdf generation - response: getDataSet_for_Clin1 : ' . json_encode($dataSet));
             $this->dump_array('dataSet', $dataSet);
             
             if (empty($dataSet)) 
@@ -196,7 +196,9 @@ class PDFGenerationService
             }
 
             if (!empty($dataSet)) 
+
             {
+                dump($dataSet);
                 // dd($dataSet,'nishad');
                 //starting my code for cln1   //Shahariar Alam
 
@@ -1179,10 +1181,10 @@ class PDFGenerationService
                             // }
                         }
 
-dump("detectedPrescribed", $detectedPrescribed);
-dump("detectedNotPrescribed", $detectedNotPrescribed);
-dump("notDetectedPrescribed", $notDetectedPrescribed);
-dump("notDetectedNotPrescribed_new_variable", $notDetectedNotPrescribed_new_variable);
+            // dump("detectedPrescribed", $detectedPrescribed);
+            // dump("detectedNotPrescribed", $detectedNotPrescribed);
+            // dump("notDetectedPrescribed", $notDetectedPrescribed);
+            // dump("notDetectedNotPrescribed_new_variable", $notDetectedNotPrescribed_new_variable);
 
 
 
@@ -1811,7 +1813,7 @@ dump("notDetectedNotPrescribed_new_variable", $notDetectedNotPrescribed_new_vari
             return $response;
         } catch (Exception $ex) {
 
-            dd($ex->getMessage());
+            //dd($ex->getMessage());
 
             $response = [
                 'content' => $ex->getMessage(),
