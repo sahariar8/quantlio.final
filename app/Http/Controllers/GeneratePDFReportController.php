@@ -135,6 +135,8 @@ class GeneratePDFReportController extends Controller
 
     public function getPDFReport_from_api(Request $request, PDFGenerationService $_pdfGenerationService)
     {
+        echo "==> pdf generation api called -> ";
+
         ini_set('max_execution_time', '0');
 
         if (! $request->isMethod('POST') ) { 
@@ -157,6 +159,7 @@ class GeneratePDFReportController extends Controller
                 $dataSet = json_decode($webhookPayloadData, true);
                
                 $orderCode = $dataSet['payload']['order_code'];
+                echo "Order code got -> ". $orderCode;
 
             }catch (\Illuminate\Validation\ValidationException $e ) {
            

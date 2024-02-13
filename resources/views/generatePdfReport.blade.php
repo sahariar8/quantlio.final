@@ -86,7 +86,7 @@
                                     class="print-fs-14">Laboratory Director : {{$labLocations_Stratus['director']}} </p>
                             </td>
                             <td style="width:270px; text-align:right">
-                                <img style="width: 250px;" src="images/salvus_labs.jpg" class="new-star-print-logo">
+                                <img style="width: 250px;" src="images/Labgen.jpg" class="new-star-print-logo">
                             </td>
                         </tr>
                     </table>
@@ -1046,16 +1046,16 @@
     </tr>
     </table>
     <footer>
-        <p><strong>IMPORTANT DISCLAIMER NOTICE : </strong> SalvusLabs warrants that all lab analysis provided is
+        <p><strong>IMPORTANT DISCLAIMER NOTICE : </strong> Clin1 warrants that all lab analysis provided is
             conducted professionally in accordance with all applicable standard laboratory practices and that this data
-            reflects SalvusLabs's attempt to generate accurate results for the specific sample(s) submitted to generate
-            this report. SalvusLabs has developed the tests used during the lab analysis and determined their
+            reflects Clin1's attempt to generate accurate results for the specific sample(s) submitted to generate
+            this report. Clin1 has developed the tests used during the lab analysis and determined their
             performance characteristics. The tests have not been cleared or approved by the Food and Drug
             Administration. The results provided are based on information provided by the Customer. Report results are
             contingent on the accuracy of the prescription list, diagnosis codes, and government databases used to
-            determine drug contraindications and drug interactions. This data reflects SalvusLabs's attempt to generate
-            accurate results based on the information that was provided to SalvusLabs by the Customer and relying on the
-            established government databases available to SalvusLabs for the specific sample(s). SalvusLabs disclaims
+            determine drug contraindications and drug interactions. This data reflects Clin1's attempt to generate
+            accurate results based on the information that was provided to Clin1 by the Customer and relying on the
+            established government databases available to Clin1 for the specific sample(s). Clin1 disclaims
             any and all liability for any errors and is not responsible for any claims or damages related to the
             reliability of the test results. </p>
     </footer>

@@ -135,12 +135,16 @@ Route::group(['middleware' => ['auth']], function() {
 
     //setting
 
-    Route::controller(SettingsController::class)->group(function(){
-        Route::get('/settings','index');
-    });
+    // Route::controller(SettingsController::class)->group(function(){
+    //     Route::get('/settings','index');
+    // });
     //get Metabolite
 
     Route::get('/metabolite',[SettingsController::class,'index']);
+    //setting Crud
+
+    Route::get('/settings',[SettingsController::class,'create']);
+   
 
 
 

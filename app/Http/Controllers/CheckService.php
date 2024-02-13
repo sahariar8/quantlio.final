@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Exception;
-use Config;
+use  Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use App\Services\PDFGenerationService;
 use App\Services\SFTPService;
@@ -69,7 +69,7 @@ class SchedulerJobController extends Controller
         
                             }else{
         
-                                echo 'inserted failed into db';
+                                echo 'inserted failed into db1';
                             }
     
                         
@@ -88,7 +88,7 @@ class SchedulerJobController extends Controller
         
                             }else{
         
-                                echo 'inserted failed into db';
+                                echo 'inserted failed into db2';
                             }
                         }
                     } else {
@@ -120,7 +120,7 @@ class SchedulerJobController extends Controller
             
                                 }else{
             
-                                    echo 'inserted failed into db';
+                                    echo 'inserted failed into db3';
                                 }
         
                             
@@ -139,7 +139,7 @@ class SchedulerJobController extends Controller
             
                                 }else{
             
-                                    echo 'inserted failed into db';
+                                    echo 'inserted failed into db4';
                                 }
 
                             }
@@ -210,7 +210,10 @@ class SchedulerJobController extends Controller
                 // }
 
                 //Ducktap: jafar : call api directly
-                $response = Http::post(Config::get('nih.stratus_pdf_generation_api').$order->orderCode, []);
+                // $response = Http::post(Config::get('nih.stratus_pdf_generation_api').$order->orderCode, []);
+                $requestURL = "http://127.0.0.1:8000/api/generate-report?order_code=".$order->orderCode;
+                echo "Request URL: ".$requestURL;
+                $response = Http::post($requestURL, []);
                 // Handle the response as needed
                 $data = $response->json();
                 if(is_array($data)){

@@ -6,6 +6,7 @@ use App\Models\Metabolite;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use App\Services\MetaboliteService;
+use Illuminate\Support\Facades\DB;
 
 class SettingsController extends Controller
 {
@@ -28,7 +29,8 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        //
+        $settings = DB::table('settings')->get();
+        return view('setting',compact('settings'));
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Exception;
-use Config;
+use  Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use App\Services\PDFGenerationService;
 use App\Services\SFTPService;
@@ -36,9 +36,9 @@ class SchedulerJobController extends Controller
         try
         {
             $files = $this->_SFTPService->getListAllInFilesInsFTPServer();
-            // dd($files);
+            dump($files);
             foreach ($files as $key=>$file) {
-                // dd($file);
+                 dump($file);
                 // $data = (new JsonErrorService)->replaceMissingValues($file);
                 // dd($data);
                 // $file = (new JsonErrorService)->check($data);
@@ -51,48 +51,66 @@ class SchedulerJobController extends Controller
                         // Access the sampleid
                         $sampleId = $data['sampleid'];
                         echo "Sample ID: $sampleId<br>";
-        
-                        $existingRecord = DB::table('input_datasets')
-                            ->where('order_code', $sampleId)
-                            ->first();
+
+                        //insert the record if not exist
+                        $insert1 = DB::table('input_datasets')
+                        ->insert([
+                            'order_code' => $sampleId, 'dataset' => json_encode($data)
+                        ]);
+                        //service calling for insert oeder code into order_code_queue table
+                        $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
     
-                        if($existingRecord){
-                            $insert4 = DB::table('input_datasets')
-                                ->where('order_code', $sampleId)
-                                ->update([
-                                    'dataset' => json_encode($data)
-                                ]);
+                        if($insert1 && $insert2){
+                            (new SFTPService)->moveInFileToArchive($key);
+                            print_r('insert hoise');
     
-                            $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
-                            if($insert4 && $insert3){
+                        }else{
+    
+                            echo 'inserted failed into db6';
+                        }
+
         
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('update hoise');
+                        // $existingRecord = DB::table('input_datasets')
+                        //     ->where('order_code', $sampleId)
+                        //     ->first();
+    
+                        // if($existingRecord){
+                        //     $insert4 = DB::table('input_datasets')
+                        //         ->where('order_code', $sampleId)
+                        //         ->update([
+                        //             'dataset' => json_encode($data)
+                        //         ]);
+    
+                        //     $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+                        //     if($insert4 && $insert3){
         
-                            }else{
+                        //         (new SFTPService)->moveInFileToArchive($key);
+                        //         print_r('update hoise');
         
-                                echo 'inserted failed into db';
-                            }
+                        //     }else{
+        
+                        //         echo 'inserted failed into db5';
+                        //     }
     
                         
-                        } else {
-                        //insert the record if not exist
-                            $insert1 = DB::table('input_datasets')
-                            ->insert([
-                                'order_code' => $sampleId, 'dataset' => json_encode($data)
-                            ]);
-                            //service calling for insert oeder code into order_code_queue table
-                            $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+                        // } else {
+                        // //insert the record if not exist
+                        //     $insert1 = DB::table('input_datasets')
+                        //     ->insert([
+                        //         'order_code' => $sampleId, 'dataset' => json_encode($data)
+                        //     ]);
+                        //     //service calling for insert oeder code into order_code_queue table
+                        //     $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
         
-                            if($insert1 && $insert2){
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('insert hoise');
+                        //     if($insert1 && $insert2){
+                        //         (new SFTPService)->moveInFileToArchive($key);
+                        //         print_r('insert hoise');
         
-                            }else{
+                        //     }else{
         
-                                echo 'inserted failed into db';
-                            }
-                        }
+                        //         echo 'inserted failed into db6';
+                        //     }
+                        // }
                     }
                 }else{
                     $data = (new JsonErrorService)->replaceMissingValues($file);
@@ -103,49 +121,66 @@ class SchedulerJobController extends Controller
                         // Access the sampleid
                         $sampleId = $data['sampleid'];
                         echo "Sample ID: $sampleId<br>";
-        
-                        $existingRecord = DB::table('input_datasets')
-                            ->where('order_code', $sampleId)
-                            ->first();
+
+                        //insert the record if not exist
+                        $insert1 = DB::table('input_datasets')
+                        ->insert([
+                            'order_code' => $sampleId, 'dataset' => json_encode($data)
+                        ]);
+                        //service calling for insert oeder code into order_code_queue table
+                        $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
     
-                        if($existingRecord){
-                            $insert4 = DB::table('input_datasets')
-                                ->where('order_code', $sampleId)
-                                ->update([
-                                    'dataset' => json_encode($data)
-                                ]);
+                        if($insert1 && $insert2){
+                            (new SFTPService)->moveInFileToArchive($key);
+                            print_r('insert hoise');
     
-                            $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
-                            if($insert4 && $insert3){
+                        }else{
+    
+                            echo 'inserted failed into db8';
+                        }
         
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('update hoise');
+                        // $existingRecord = DB::table('input_datasets')
+                        //     ->where('order_code', $sampleId)
+                        //     ->first();
+    
+                        // if($existingRecord){
+                        //     $insert4 = DB::table('input_datasets')
+                        //         ->where('order_code', $sampleId)
+                        //         ->update([
+                        //             'dataset' => json_encode($data)
+                        //         ]);
+    
+                        //     $insert3 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+                        //     if($insert4 && $insert3){
         
-                            }else{
+                        //         (new SFTPService)->moveInFileToArchive($key);
+                        //         print_r('update hoise');
         
-                                echo 'inserted failed into db';
-                            }
+                        //     }else{
+        
+                        //         echo 'inserted failed into db7';
+                        //     }
     
                         
-                        } else {
-                        //insert the record if not exist
-                            $insert1 = DB::table('input_datasets')
-                            ->insert([
-                                'order_code' => $sampleId, 'dataset' => json_encode($data)
-                            ]);
-                            //service calling for insert oeder code into order_code_queue table
-                            $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
+                        // } else {
+                        // //insert the record if not exist
+                        //     $insert1 = DB::table('input_datasets')
+                        //     ->insert([
+                        //         'order_code' => $sampleId, 'dataset' => json_encode($data)
+                        //     ]);
+                        //     //service calling for insert oeder code into order_code_queue table
+                        //     $insert2 = ( new InsertOrderCodeService)->insertOrderCode($sampleId);
         
-                            if($insert1 && $insert2){
-                                (new SFTPService)->moveInFileToArchive($key);
-                                print_r('insert hoise');
+                        //     if($insert1 && $insert2){
+                        //         (new SFTPService)->moveInFileToArchive($key);
+                        //         print_r('insert hoise');
         
-                            }else{
+                        //     }else{
         
-                                echo 'inserted failed into db';
-                            }
+                        //         echo 'inserted failed into db8';
+                        //     }
 
-                        }
+                        // }
                     }
                 
                 }
@@ -210,7 +245,11 @@ class SchedulerJobController extends Controller
                 // }
 
                 //Ducktap: jafar : call api directly
-                $response = Http::post(Config::get('nih.stratus_pdf_generation_api').$order->orderCode, []);
+                 //$response = Http::post(Config::get('nih.stratus_pdf_generation_api').$order->orderCode, []);
+                $requestURL = "http://127.0.0.1:8000/api/generate-report?order_code=".$order->orderCode;
+                echo "Request URL: ".$requestURL;
+                $response = Http::post($requestURL, []);
+                
                 // Handle the response as needed
                 $data = $response->json();
                 if(is_array($data)){
@@ -275,6 +314,6 @@ class SchedulerJobController extends Controller
         $tableName = 'order_code_queues';
         // remove take(2) methon in between
        // return OrderCodeQueue::where('workStatus', '=', 0)->where('numberOfFailur', '<', 5)->take(1)->get();
-        return DB::table($tableName)->where('workStatus', '=', 0)->where('numberOfFailur', '<', $this->_pdfGenerationService->get_env_TRY_IF_FAILED_TIMES() )->take(1)->get();
+        return DB::table($tableName)->where('workStatus', '=', 0)->where('numberOfFailur', '<', $this->_pdfGenerationService->get_env_TRY_IF_FAILED_TIMES() )->orderBy('id', 'desc')->take(1)->get();
     }
 }
